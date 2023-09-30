@@ -1,0 +1,12 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  background-color: rgb(255, 255, 255);
+}
+
+.navbar-logo {
+  max-width: 200px;
+  height: auto;
+}

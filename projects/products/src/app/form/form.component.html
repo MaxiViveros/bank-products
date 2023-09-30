@@ -1,0 +1,63 @@
+<div class="container mt-4">
+  <h2>Formulario de Registro</h2>
+  <hr style="border: 2px solid black; margin: 20px 0;">
+  <div class="row d-flex justify-content-center">
+      <div class="col-4">
+        <div class="form-group" style="text-align: start; font-weight: bold">
+          <label for="id">ID</label>
+          <input type="text" id="id" class="form-control" [(ngModel)]="newProduct.id"
+                 [ngModelOptions]="{standalone: true}" (input)="onInputIdChange($event)" [disabled]="disabledEditId">
+          <p style="color: red" *ngIf="errorMessageInId != ''">{{errorMessageInId}}</p>
+        </div>
+
+        <div class="form-group mt-4" style="text-align: start; font-weight: bold">
+          <label for="description">Descripción</label>
+          <input id="description" class="form-control" [(ngModel)]="newProduct.description"
+                    [ngModelOptions]="{standalone: true}" (input)="onDescriptionChange($event)">
+          <p style="color: red" *ngIf="errorMessageInDescription != ''">{{errorMessageInDescription}}</p>
+        </div>
+
+        <div class="form-group mt-4" style="text-align: start; font-weight: bold">
+          <label for="date_release">Fecha Liberación</label>
+          <input type="date" id="date_release" class="form-control" [(ngModel)]="newProduct.date_release"
+                 [ngModelOptions]="{standalone: true}" (input)="onDateReleaseChange($event)">
+          <p style="color: red" *ngIf="errorMessageInDateRelease != ''">{{errorMessageInDateRelease}}</p>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group" style="text-align: start; font-weight: bold">
+          <label for="name">Nombre</label>
+          <input type="text" id="name" class="form-control" (input)="onInputNameChange($event)"
+                 [(ngModel)]="newProduct.name" [ngModelOptions]="{standalone: true}">
+          <p style="color: red" *ngIf="errorMessageInName != ''">{{errorMessageInName}}</p>
+        </div>
+
+        <div class="form-group mt-4" style="text-align: start; font-weight: bold">
+          <label for="logo">Logo</label>
+          <input type="text" id="logo" class="form-control" [(ngModel)]="newProduct.logo"
+                 [ngModelOptions]="{standalone: true}" (input)="onLogoChange($event)">
+          <p style="color: red" *ngIf="errorMessageInLogo != ''">{{errorMessageInLogo}}</p>
+        </div>
+
+        <div class="form-group mt-4" style="text-align: start; font-weight: bold">
+          <label for="date_revision">Fecha Revisión</label>
+          <input type="date" id="date_revision" class="form-control" [(ngModel)]="newProduct.date_revision"
+                 [ngModelOptions]="{standalone: true}" (input)="onDateRevisionChange($event)">
+          <p style="color: red" *ngIf="errorMessageInDateRevision != ''">{{errorMessageInDateRevision}}</p>
+        </div>
+      </div>
+  </div>
+
+  <div class="d-flex justify-content-between mt-2">
+    <div>
+      <button type="button" class="btn btn-light" (click)="cleanForm()">Reiniciar</button>
+    </div>
+    <div *ngIf="!editMode">
+      <button type="button" class="btn btn-warning" [disabled]="!isFormReady()" (click)="postProduct()">Enviar</button>
+    </div>
+    <div *ngIf="editMode">
+      <button type="button" class="btn btn-warning" [disabled]="!isFormReady()" (click)="putProduct()">Editar</button>
+    </div>
+  </div>
+</div>
+
